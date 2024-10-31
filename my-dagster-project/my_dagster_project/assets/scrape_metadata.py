@@ -18,6 +18,9 @@ from dagster import asset, AssetIn
         kinds={'python'}
 )
 def scrape_metadata(channel_tags: List) -> List:
+    '''
+    Scrapes channel_tag, channel_name, verified status, subscribers and more
+    '''
 
     options = Options()
     options.binary_location = "/usr/bin/firefox"

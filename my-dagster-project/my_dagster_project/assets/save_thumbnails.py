@@ -8,10 +8,10 @@ from dagster import asset, AssetIn
 from dagster_duckdb import DuckDBResource
 
 @asset(
-        ins={"metadata": AssetIn("clean_metadata")},
+        ins={"metadata": AssetIn("scrape_thumbnails")},
         kinds={'python', 'duckdb'}
 )
-def save_to_database(ddb:DuckDBResource, metadata: List) -> None:
+def save_thumbnails(ddb:DuckDBResource, metadata: List) -> None:
     '''
     Save to duckdb database
     '''

@@ -3,8 +3,9 @@ from .assets import \
     check_channels, \
     scrape_thumbnails, \
     scrape_metadata, \
-    save_to_database, \
-    clean_metadata
+    save_metadata, \
+    clean_metadata, \
+    save_thumbnails
 
 from .resources import duckdb_resource
 
@@ -15,8 +16,9 @@ all_assets = load_assets_from_modules([load_channels, \
                                         check_channels, \
                                         scrape_thumbnails, \
                                         scrape_metadata, \
-                                        save_to_database, \
-                                        clean_metadata  ])
+                                        save_metadata, \
+                                        clean_metadata, \
+                                        save_thumbnails  ])
 
 defs = Definitions(
     assets=all_assets,
