@@ -53,6 +53,25 @@ Throughout the development of this application, several challenges arose, includ
 - **Workaround with Unloaded YouTube Chunks**: Encountered issues with accessing and loading certain chunks of data from YouTube, requiring creative solutions.
 
 
+## To run dashboard
+Install requirements
+```bash
+streamlit run app.py
+```
+
+## To run dagster
+Go to file location
+```bash
+cd my-dagster-project
+```
+Run dagster
+```bash
+dagster dev
+```
+
+
+
+
 ## Future Work
 Future improvements could include:
 
