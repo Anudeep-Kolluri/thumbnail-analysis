@@ -1,7 +1,4 @@
-# Creating the README content in Markdown format
-readme_content = """
-# YouTube Channel Analysis App
-
+# YouTube Channel Analysis App [link](https://kolluri-youtube-dashboard.streamlit.app/)
 ## Overview
 
 This project aims to analyze YouTube channels by scraping data using automated tools. The application is designed to scrape relevant data from YouTube, store it in DuckDB, and provide an interactive dashboard using Streamlit. While the primary goal was to analyze channel metrics, the project originally aimed to examine the correlation between YouTube thumbnails and views, which was ultimately outside the project scope.
