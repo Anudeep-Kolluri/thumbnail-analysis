@@ -56,7 +56,7 @@ def scrape_metadata(channel_tags: List) -> List:
             channel_name = element.get_text(strip=True)
             is_verified = "verified" in element.get("aria-label", "").lower()  # Check if 'verified' is in aria-label
 
-            data['channel_tag'] = channel_tag
+            data['channel_tag'] = channel_tag.lower()
             data['channel_name'] = channel_name
             data['is_verified'] = is_verified
 

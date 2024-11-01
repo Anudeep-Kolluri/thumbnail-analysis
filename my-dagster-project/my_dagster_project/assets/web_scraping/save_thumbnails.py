@@ -8,10 +8,10 @@ from dagster import asset, AssetIn
 from dagster_duckdb import DuckDBResource
 
 @asset(
-        ins={"thumbnail_data": AssetIn("clean_metadata")},
+        ins={"thumbnail_data": AssetIn("scrape_thumbnails")},
         kinds={'python', 'duckdb'}
 )
-def save_metadata(ddb:DuckDBResource, thumbnail_data: List) -> None:
+def save_thumbnails(ddb:DuckDBResource, thumbnail_data: List) -> None:
     '''
     Save to duckdb database
     '''
@@ -23,9 +23,9 @@ def save_metadata(ddb:DuckDBResource, thumbnail_data: List) -> None:
 
         for record in thumbnail_data:
             conn.execute(query, (
-                record['channel_tag'],       # Assuming this is the unique identifier for the video/channel
-                record['video_title'],       # Map this to the appropriate field from your data
-                record['view_count'],        # Number of views for the video
-                record['time_updated'],      # Timestamp for when the data was updated
-                record['thumbnail_link']     # Link to the thumbnail image
+                record[0],       # Assuming this is the unique identifier for the video/channel
+                record[1],       # Map this to the appropriate field from your data
+                record[2],        # Number of views for the video
+                record[3],      # Timestamp for when the data was updated
+                record[4]     # Link to the thumbnail image
             ))

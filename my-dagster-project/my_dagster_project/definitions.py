@@ -1,4 +1,4 @@
-from .assets import \
+from .assets.web_scraping import \
     load_channels, \
     check_channels, \
     scrape_thumbnails, \
@@ -6,6 +6,11 @@ from .assets import \
     save_metadata, \
     clean_metadata, \
     save_thumbnails
+
+from .assets.machine_learning import \
+    load_images, \
+    save_model, \
+    train_model
 
 from .resources import duckdb_resource
 
@@ -18,7 +23,10 @@ all_assets = load_assets_from_modules([load_channels, \
                                         scrape_metadata, \
                                         save_metadata, \
                                         clean_metadata, \
-                                        save_thumbnails  ])
+                                        save_thumbnails, \
+                                        load_images, \
+                                        save_model, \
+                                        train_model  ])
 
 defs = Definitions(
     assets=all_assets,

@@ -28,17 +28,17 @@ def scrape_thumbnails(channel_tags) -> List:
     options.add_argument("--headless")  # Run in headless mode
     options.log.level = "trace"  # Enable verbose logging
 
-    # Set up the Firefox WebDriver with the Service class
-    service = Service(GeckoDriverManager().install())
-    print("Starting Firefox...")
-    driver = webdriver.Firefox(service=service, options=options)
-
-
     aria_labels = []
 
 
-    # Navigate to the YouTube videos page
     for channel_tag in channel_tags:
+
+        # Set up the Firefox WebDriver with the Service class
+        service = Service(GeckoDriverManager().install())
+        print("Starting Firefox...")
+        driver = webdriver.Firefox(service=service, options=options)
+
+        # Navigate to the YouTube videos page
         URL = f"https://www.youtube.com/@{channel_tag}/videos"
 
         print(f"Entering website {channel_tag}")
@@ -74,7 +74,7 @@ def scrape_thumbnails(channel_tags) -> List:
 
         for tag, href in zip(contents_div.find_all('a', attrs={'aria-label': True}), thumbnails):
 
-            data = [channel_tag, None, None, None, None]
+            data = [channel_tag.lower(), None, None, None, None]
             labels = tag['aria-label'].split(" ")
 
             checks = set(labels[-7:])
@@ -95,9 +95,10 @@ def scrape_thumbnails(channel_tags) -> List:
 
             # print(data)
             aria_labels.append(data)
+            # Close the driver
+        driver.quit()
         print(len(aria_labels), len(thumbnails))
             
-    # Close the driver
-    driver.quit()
+
 
     return aria_labels   #aria_labels is thumbnail_data

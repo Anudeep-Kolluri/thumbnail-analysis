@@ -7,11 +7,12 @@ from typing import List
 from dagster import asset, AssetIn
 from dagster_duckdb import DuckDBResource
 
+
 @asset(
-        ins={"metadata": AssetIn("scrape_thumbnails")},
+        ins={"metadata": AssetIn("clean_metadata")},
         kinds={'python', 'duckdb'}
 )
-def save_thumbnails(ddb:DuckDBResource, metadata: List) -> None:
+def save_metadata(ddb:DuckDBResource, metadata: List) -> None:
     '''
     Save to duckdb database
     '''
